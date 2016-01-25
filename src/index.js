@@ -2,6 +2,7 @@ export * from './types'
 export * from 'ramda'
 export * as adt from 'adt'
 export * from 'matches'
+export * as lenses from 'lenses'
 
 import parser from './parser/parser'
 import adt from 'adt'
