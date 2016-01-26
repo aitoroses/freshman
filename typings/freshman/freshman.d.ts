@@ -1,6 +1,6 @@
-declare var F: F.Static;
+declare var __Freshman: __Freshman.Static;
 
-declare module F {
+declare module __Freshman {
 
     /**
      * A special placeholder value used to specify "gaps" within curried functions,
@@ -1743,5 +1743,5 @@ declare module F {
 }
 
 declare module 'freshman' {
-    export = F;
+    export = __Freshman;
 }
