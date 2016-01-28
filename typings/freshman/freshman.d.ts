@@ -1722,9 +1722,47 @@ declare module "freshman" {
 
     export function T(): boolean;
 
+
+
+
     // Custom additional methods and constructs
 
-    export var Maybe: any
+    export interface Monad<T> {
+      of<U>(x: U): Monad<U>
+      chain<U>(f: (t: T) => Monad<U>): Monad<U>
+      map<U>(f: (a: T) => U): Monad<U>
+    }
+
+    // ---------------------
+
+    export interface Just<T> extends Maybe<T> {}
+    export interface Nothing extends Maybe<void> {}
+
+    export interface Maybe<T> extends Monad<T>{
+      Just<T>(x: T): Just<T>
+      Nothing(): Nothing
+      fromNullable<T>(x: T): Maybe<T>
+
+      // Monad Interface
+      of<U>(x: U): Maybe<U>
+      chain<U>(f: (t: T) => Maybe<U>): Maybe<U>
+      map<U>(f: (a: T) => U): Maybe<U>
+
+      isNothing: boolean
+      isJust: boolean
+      isEqual<U>(x: Maybe<U>): boolean
+      get(): T
+      getOrElse(x: T): T
+      orElse(f: () => T): T
+      cata<U>(x: Maybe<any>): Maybe<U>
+      toJSON(): string
+
+      fromEither: any
+      fromValidation: any
+    }
+
+    export var Maybe: Maybe<any>
+
     export var Either: any
     export var Task: any
     export var pattern: any
