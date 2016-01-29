@@ -1733,6 +1733,7 @@ declare module "freshman" {
       map<U>(f: (a: T) => U): Monad<U>
     }
 
+    // Maybe definition
     // ---------------------
 
     export interface Just<T> extends Maybe<T> {}
